@@ -4,12 +4,14 @@ class Counter{
     /*
     public synchronized void increment(){
         count++;// we made method synchronized
+        //if multiple threads working on critical section and the
+        //final result is affected this is called race condition.
     }
-
      */
     public void increment(){
         synchronized(this) {
-            count++;
+            count++;//this is critical section (common resource accessed by multiple processes)
+            //mutual exclution -> only 1 thread access critical<> section at a time.
         }
     }
     public int getCount() {
