@@ -1,4 +1,8 @@
 package lambdaExpression;
+
+import java.util.Arrays;
+import java.util.List;
+
 //This is functional interface
 interface StringFormatter{
     String format(String input);
@@ -21,5 +25,20 @@ public class ExampleLambda {
 
         Bio bio = (input)-> System.out.println(input+" I am Engnieer");
         bio.getBio("kaushal");
+    }
+
+    // usage of lambda expression in streamAPI.
+    public static void newmain() {
+        List<String> names = Arrays.asList("Alice", "Bob", "Charlie", "David");
+
+        names.stream()
+                // 1. Predicate: Filter names starting with 'A' or 'C'
+                .filter(name -> name.startsWith("A") || name.startsWith("C"))
+
+                // 2. Function: Transform the string to uppercase
+                .map(String::toUpperCase)
+
+                // 3. Consumer: Print each element
+                .forEach(System.out::println);
     }
 }
