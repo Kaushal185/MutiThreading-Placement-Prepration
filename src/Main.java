@@ -11,8 +11,8 @@ class MyThread extends Thread{
         }
     }
 }
-
 class World implements Runnable{
+    @Override
     public void run(){
         for(int i=0;i<5;i++){
             System.out.println(Thread.currentThread());
@@ -32,14 +32,20 @@ public class Main {
         Terminated
          */
         MyThread t1 = new MyThread();
-        System.out.println(t1.getName()+" "+t1.getState());
+        System.out.println(t1.getName()+" "+t1.getState());//NEW
         t1.start();
-        System.out.println(t1.getName()+" "+t1.getState());
+        System.out.println(t1.getName()+" "+t1.getState());//RUNNABLE
+        /*
+            Thread created, It is eligible to run
+            JVM puts it into RUNNABLE state
+            it has NOT yet executed run()
+         */
         //t1.join();
         /*
-         The Thread.join() method is used for thread synchronization.
-         It pauses the execution of the current thread until,
+         The Thread.join() method is used for thread synchronization. Used for managing the execution order of multiple threads.
          the thread on which the join() method is called completes its execution (dies)
+         This is a crucial mechanism for inter-thread synchronization when the outcome of one thread depends on the completion of another.
+         It pauses the execution of the current thread until,
          */
         //Thread.sleep(1000);
         System.out.println(Thread.currentThread().getName()+" "+Thread.currentThread().getState());
