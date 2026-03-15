@@ -221,3 +221,40 @@ It is best practice to always use `@Override` above the method in the child clas
 | **Private/Static** | Can be overloaded | **Cannot** be overridden |
 | **Focus** | Readability | Changing Behavior |
 
+# Abstract Keyword in Java
+
+## 📌 Overview
+The `abstract` keyword is a non-access modifier used for classes and methods:
+* **Abstract Class:** A restricted class that cannot be used to create objects (to access it, it must be inherited from another class).
+* **Abstract Method:** A method that consists of a signature and no body (implementation). The body is provided by the subclass.
+
+> **Analogy:** Think of an **Abstract Class** like a "Template" or a "Blue Print." A `Car` blueprint defines that every car must have an engine and wheels, but it doesn't build the car itself. You need a concrete class like `Ferrari` or `Toyota` to build it.
+
+[Image of abstract class vs concrete class diagram]
+
+---
+
+## 🏗 1. Abstract Class
+A class which is declared with the `abstract` keyword.
+
+### Rules:
+1.  **Instantiation:** It **cannot be instantiated** (you cannot do `new AbstractClass()`).
+2.  **Constructors:** It **can have constructors** and static methods.
+3.  **Methods:** It can have both **abstract** (methods without body) and **concrete** (methods with body) methods.
+4.  **Final:** It **cannot be `final`** (because it must be inherited).
+
+```java
+abstract class Vehicle {
+    // Constructor
+    Vehicle() {
+        System.out.println("Vehicle is created");
+    }
+
+    // Abstract method (no body)
+    abstract void run();
+
+    // Concrete method (has body)
+    void changeGear() {
+        System.out.println("Gear changed");
+    }
+}
