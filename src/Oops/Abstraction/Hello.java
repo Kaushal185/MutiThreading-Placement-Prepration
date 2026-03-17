@@ -1,4 +1,4 @@
-package Oops.abstractKeyword;
+package Oops.Abstraction;
 
 abstract class Polygon{
     int length;

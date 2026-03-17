@@ -1,6 +1,7 @@
 package Multithreading;
 
 class WithExtends extends Thread{
+    @Override
     public void run(){
         //run method extended from Thread class can not throws InterruptedExcpetion
         //we have to handle it via try and catch in the which in which it is extended
@@ -17,6 +18,7 @@ class WithExtends extends Thread{
 }
 
 class WithRunnable implements Runnable{
+    @Override
     public void run(){
         try {
             for(int i=0;i<5;i++){
@@ -42,6 +44,5 @@ public class MyMain {
         WithRunnable withRunnable = new WithRunnable();
         Thread t2 = new Thread(withRunnable);
         t2.start();
-
     }
 }
