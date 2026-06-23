@@ -1,3 +1,4 @@
+import java.util.PriorityQueue;
 
 class MyThread extends Thread{
     public void run(){
@@ -22,6 +23,7 @@ class World implements Runnable{
 
 public class Main {
     public static void main(String[] args) throws InterruptedException{
+
         /*
         Thread States:
         New

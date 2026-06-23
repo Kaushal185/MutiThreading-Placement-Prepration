@@ -29,9 +29,6 @@ Replication factor: a partition is replicated by this factor and it is replicate
 
 Partitions: A topic is split into several parts which are known as the partitions of the topic.
 Partition is where the actual message is located.
-
-
-
  */
 public class KafKaNotes {
 

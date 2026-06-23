@@ -2,6 +2,8 @@ package lambdaExpression;
 //FunctionalInterface -> Interfaces with single abstract method is present is called
 //ex. Runnable is functional interface
 
+import java.util.concurrent.Callable;
+
 /*
     Lambda Expression - anonymous function
     Anonymous: It does not have a name.
@@ -11,7 +13,6 @@ package lambdaExpression;
     Concise Syntax: It provides a compact, readable syntax compared to traditional anonymous inner classes.
  */
 public class LmbdaExpression {
-
 
     public static void main(String[] args) {
         Runnable task = new Runnable(){
@@ -29,4 +30,9 @@ public class LmbdaExpression {
         Runnable task3 = ()-> System.out.println("Hello");// executing single statement so {} removed
     }
 
+    Runnable r = ()->{
+        for (int i = 0; i < 100; i++) {
+            System.out.println("Hello world");
+        }
+    };
 }

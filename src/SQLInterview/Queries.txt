@@ -1,0 +1,176 @@
+🔷 🟢 Level 1: Basic Queries (Foundation)
+
+These check if your basics are solid.
+
+Retrieve all employees with their department names
+List all employees and their salaries sorted descending
+Show all projects with budget greater than 1 lakh
+Find all employees who belong to the IT department
+Count total number of employees in each department
+🔷 🟡 Level 2: Joins (VERY IMPORTANT)
+
+This is where most interviews focus.
+
+1. Get employee name with department name (INNER JOIN)
+     select e.emp_name,d.dept_name
+     from employee e
+     left join department d
+     on e.dept_id = d.dept_id;
+
+2. List all employees and their manager names (SELF JOIN)
+	 select e.emp_name,d.emp_name
+	 from employee e
+	 inner join employee d
+	 on e.manager_id = d.emp_id;
+
+3. Show employees along with projects they are working on
+
+Normal:
+select e.emp_name,temp.project_name
+from employee e
+left join (
+	select ep.emp_id,ep.project_id,p.project_name
+	from employee_project ep
+	left join project p
+	on ep.project_id = p.project_id
+) as temp
+on e.emp_id = temp.emp_id;
+
+
+Optimized:
+SELECT e.emp_name, p.project_name
+FROM employee e
+LEFT JOIN employee_project ep
+    ON e.emp_id = ep.emp_id
+LEFT JOIN project p
+    ON ep.project_id = p.project_id;
+
+
+4. Find all employees who are not assigned to any project (LEFT JOIN)
+	 select e.emp_name
+	 from employee e
+	 left join employee_project ep
+	 on e.emp_id = ep.emp_id
+	 where ep.project_id is null;
+
+5. List all projects with employee count working on them
+
+Normal:
+	 select p.project_name, tmp.count
+	 from(
+		 select project_id,count(emp_id) as count
+		 from employee_project
+		 group by project_id
+	 ) as tmp
+	 left join project p
+	 on tmp.project_id = p.project_id;
+
+Optimal:
+
+select p.project_name,count(ep.emp_id)
+from project p
+left join employee_project ep
+on p.project_id = ep.project_id
+group by p.project_id,p.project_name;
+
+
+🔷 🔵 Level 3: GROUP BY + HAVING
+
+Tests aggregation thinking.
+
+Find average salary in each department
+Find departments having more than 2 employees
+Get highest salary in each department
+Find departments where average salary > 50,000
+Count number of employees working on each project
+
+
+🔷 🟣 Level 4: Subqueries (Interview Favorite)
+
+Very commonly asked.
+
+1. Find employees earning more than average salary
+
+2. Find second highest salary
+
+3. Find employees whose salary is greater than their manager
+
+	select e.emp_id,e.emp_name
+	from employee e
+	where salary > (
+		select m.salary
+		from employee m
+		where e.manager_id = m.emp_ideibccbnkjjkvcujvkbutfclkrfbkkdlndiircevhidcj
+
+	);
+
+4. Find employees working in the department with highest average salary
+
+	select d.dept_name,tmp.max_salary
+	from department d
+	left join (
+		select dept_id, max(salary) as max_salary
+		from employee
+		group by dept_id
+	) tmp
+	on d.dept_id = tmp.dept_id;
+
+Find projects with budget greater than average budget
+
+
+🔷 🔴 Level 5: Advanced / Real Interview Questions
+
+These differentiate average vs strong candidates.
+
+Find employees working on more than 1 project
+
+	select e.emp_id,e.emp_name,temp.total_projects
+	from employee e
+	inner join (
+		select emp_id, count(project_id) as total_projects
+		from employee_project
+		group by emp_id
+		having total_projects > 1
+	) as temp
+	on e.emp_id = temp.emp_id;
+
+
+Find departments with no employees
+
+Find employees not assigned to any project
+
+Get top 3 highest paid employees
+	select emp_id,emp_name,salary
+	from employee order by salary DESC
+	limit 3;
+
+Find employee who is working on maximum number of projects
+
+Find project with highest number of employees
+Find employees who are managers (i.e., someone reports to them)
+	select DISTINCT e.emp_id,e.emp_name
+	from employee e
+	inner join employee d
+	on e.emp_id = d.manager_id;
+
+Find employees who do not have a manager
+
+
+Find department with highest total salary expense
+
+Find employees working on all projects
+
+
+
+🔷 🔥 Level 6: Very Advanced (Top-tier interviews)
+If you can solve these, you're strong.
+Find employees who share the same salary in same department
+Find duplicate salaries
+Get nth highest salary (generalized)
+Find employees whose salary is above department average
+Find departments where no employee earns less than 30,000
+Find employees who work on at least 2 projects AND earn > 50k
+Find project(s) where all employees belong to same department
+Find employees who are not working on project with highest budget
+Find employees whose manager earns less than them
+Find department with least number of employees

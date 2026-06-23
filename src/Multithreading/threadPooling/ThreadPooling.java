@@ -25,6 +25,19 @@ package Multithreading.threadPooling;
 
  */
 public class ThreadPooling {
+
+    private static long factorial(int n){
+        try {
+            Thread.sleep(1000);
+        }catch (InterruptedException e){
+            throw new RuntimeException();
+        }
+        long result = 1;
+        for (int i = 1; i <= n; i++) {
+            result *= i;
+        }
+        return result;
+    }
     public static void main(String[] args) throws InterruptedException {
         long startTime = System.currentTimeMillis();
         Thread[] thread = new Thread[9];
@@ -52,17 +65,6 @@ public class ThreadPooling {
 
  */
     }
-    private static long factorial(int n){
-        try {
-            Thread.sleep(1000);
-        }catch (InterruptedException e){
-            throw new RuntimeException();
-        }
-        long result = 1;
-        for (int i = 1; i <= n; i++) {
-            result *= i;
-        }
-        return result;
-    }
+
 
 }

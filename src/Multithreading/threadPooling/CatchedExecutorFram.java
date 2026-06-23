@@ -13,16 +13,31 @@ class DependentService implements Callable {
 }
 public class CatchedExecutorFram {
     public static void main(String[] args) throws InterruptedException, ExecutionException {
+        double startTime = System.currentTimeMillis();
+        double totalTime = 0;
         //ExecutorService executorService = Executors.newCachedThreadPool();// dynamically adjust thread pool size
         ExecutorService executorService = Executors.newFixedThreadPool(3);
         Future<String> future1 = executorService.submit(new DependentService());
         Future<String> future2 = executorService.submit(new DependentService());
         Future<String> future3 = executorService.submit(new DependentService());
-        future1.get();
-        future2.get();
-        future3.get();
+        //future1.get();
+        //future2.get();
+        //future3.get();
 
         System.out.println("All dependent services finished. Starting main service...");
         executorService.shutdown();
+        double endTime = System.currentTimeMillis();
+        totalTime = (endTime-startTime)/1000;
+        System.out.println("total time of computation: "+totalTime+" seconds");
+
+        Thread zz = new Thread(() ->{
+            for (int i = 1; i <10 ; i++) {
+                try{
+                    Thread.sleep(5000);
+                }catch (InterruptedException e){
+                    e.printStackTrace();
+                }
+            }
+        });
     }
 }
