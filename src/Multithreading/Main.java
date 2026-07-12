@@ -34,7 +34,7 @@ public class Main {
         Waiting/Blocked
         Terminated
          */
-        MyThread t1 = new MyThread();
+        BufferVsBuilder t1 = new BufferVsBuilder();
         System.out.println(t1.getName()+" "+t1.getState());
         t1.start();
         System.out.println(t1.getName()+" "+t1.getState());

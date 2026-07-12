@@ -7,7 +7,7 @@ public class MethodOverloading {
     int add(int a, int b, int c){
         return a+b+c;
     }
-    double add(double a,double b){
+    double add(double a,int b){
         return a + b;
     }
 /*
@@ -25,7 +25,8 @@ public class MethodOverloading {
                 Return type alone cannot differentiate overloaded methods.
                 It is resolved at compile time, not runtime.
 
-                Yes. In Java, you cannot overload a method by changing only the return type. The parameter list must be different; otherwise the compiler cannot determine which method to call.
+                Yes. In Java, you cannot overload a method by changing only the return type. The parameter list must be different;
+                otherwise the compiler cannot determine which method to call.
 
                 Consider this example:
 
@@ -52,6 +53,6 @@ public class MethodOverloading {
         MethodOverloading methodOverloading= new MethodOverloading();
         System.out.println(methodOverloading.add(10,20));
         System.out.println(methodOverloading.add(10,15,20));
-        System.out.println(methodOverloading.add(20.5,31.2));
+        System.out.println(methodOverloading.add(20.5,31));
     }
 }

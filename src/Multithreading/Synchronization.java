@@ -41,7 +41,10 @@ public class Synchronization {
         t2.start();
         try {
             t1.join();
-            t2.join();// written join to finish both t1 and t2 then print count value;
+            t2.join();
+            //when we call join then main thread will wait for t1 and t2
+            //not t1 will wait or t2 will wait for each other.
+            // written join to finish both t1 and t2 then print count value;
         }catch (InterruptedException e){
 
         }

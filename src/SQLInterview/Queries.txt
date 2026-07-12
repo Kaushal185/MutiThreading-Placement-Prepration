@@ -2,11 +2,23 @@
 
 These check if your basics are solid.
 
-Retrieve all employees with their department names
-List all employees and their salaries sorted descending
+sList all employees and their salaries sorted descending
 Show all projects with budget greater than 1 lakh
 Find all employees who belong to the IT department
+    select e.emp_id,e.emp_name,d.dept_name
+    from employee e
+    inner join department d
+    on e.dept_id = d.dept_id
+    where d.dept_name = 'IT';
+
 Count total number of employees in each department
+
+    select d.dept_id,d.dept_name,count(e.salary) as totalStrengh
+    from employee e
+    inner join department d
+    on e.dept_id = d.dept_id
+    group by d.dept_id,dept_name;
+
 🔷 🟡 Level 2: Joins (VERY IMPORTANT)
 
 This is where most interviews focus.
@@ -54,6 +66,13 @@ LEFT JOIN project p
 	 where ep.project_id is null;
 
 5. List all projects with employee count working on them
+
+select *
+from project p
+left join employee_project ep
+on p.project_id = ep.project_id;
+
+If we want project name then:
 
 Normal:
 	 select p.project_name, tmp.count
@@ -163,14 +182,50 @@ Find employees working on all projects
 
 
 🔷 🔥 Level 6: Very Advanced (Top-tier interviews)
-If you can solve these, you're strong.
-Find employees who share the same salary in same department
+***If you can solve these, you're strong.
+1. Find employees who share the same salary in same department
+
+    SELECT e.emp_name AS employee1,
+           f.emp_name AS employee2,
+           e.salary,
+           e.dept_id
+    FROM employee e
+    JOIN employee f
+    ON e.salary = f.salary
+    AND e.dept_id = f.dept_id
+    WHERE e.emp_id < f.emp_id;
+
 Find duplicate salaries
-Get nth highest salary (generalized)
-Find employees whose salary is above department average
-Find departments where no employee earns less than 30,000
-Find employees who work on at least 2 projects AND earn > 50k
-Find project(s) where all employees belong to same department
-Find employees who are not working on project with highest budget
-Find employees whose manager earns less than them
-Find department with least number of employees
+2. Get nth highest salary (generalized)
+3. Find employees whose salary is above department average
+
+4. Find departments where no employee earns less than 30,000
+
+5. Find employees who work on at least 2 projects AND earn > 50k
+
+    SELECT e.emp_id,
+           e.emp_name,
+           COUNT(ep.project_id) AS project_count
+    FROM employee e
+    JOIN employee_project ep
+    ON e.emp_id = ep.emp_id
+    WHERE e.salary > 50000
+    GROUP BY e.emp_id, e.emp_name
+    HAVING COUNT(ep.project_id) >= 2;
+
+
+6.Find project(s) where all employees belong to same department
+7.Find employees who are not working on project with highest budget
+8.Find employees whose manager earns less than them
+
+9. Find department with least number of employees
+
+select d.dept_name, count(e.emp_id)
+from department d
+left join employee e
+on d.dept_id = e.dept_id
+group by d.dept_name
+order by count(e.emp_id) limit 1;
+
+
+if we want all department have minimum employee count.

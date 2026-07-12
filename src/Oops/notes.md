@@ -8,7 +8,7 @@ A package in Java is a mechanism to encapsulate a group of classes, sub-packages
 * **Access Control:** Packages provide a layer of access control using `protected` and `default` (package-private) modifiers.
 * **Reusability:** Packaged code can be imported and reused in other classes or projects.
 * **Modularity:** Encourages modular programming by separating functionality into distinct, manageable logical units.
-
+![img_2.png](img_2.png)
 ---
 
 ## 2. Access Modifiers

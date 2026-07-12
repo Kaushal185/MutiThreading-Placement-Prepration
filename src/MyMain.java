@@ -34,13 +34,16 @@ public class MyMain {
         //Created Thread with extending Thread class
         WithExtends t1 = new WithExtends();//NEW
         t1.start();//RUNNABLE,RUNNING
-        for (int i = 0; i < 5; i++) {
-            System.out.println(Thread.currentThread().getName()+" "+Thread.currentThread().getState());
-        }
+        t1.join();
+        System.out.println(Thread.currentThread().getName()+" "+Thread.currentThread().getState());
+
 
         WithRunnable withRunnable = new WithRunnable();
         Thread t2 = new Thread(withRunnable);
+        Thread t3 = new Thread(withRunnable);
         t2.start();
-
+        t3.start();
+        t2.join();
+        t3.join();
     }
 }
