@@ -1,4 +1,4 @@
-package org.nailyourinterview.lld.rate_limiter.model;
+package SystemDesign.lldPractice.rate_limiter.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

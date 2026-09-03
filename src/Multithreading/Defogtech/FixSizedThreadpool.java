@@ -4,20 +4,9 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
-class CpuIntensiveTask implements Runnable {
 
-    @Override
-    public void run() {
-        try {
-            Thread.sleep(1000);
-            System.out.println(Thread.currentThread().getName());
-        } catch (InterruptedException e) {
-            Thread.currentThread().interrupt();
-        }
-    }
-}
 
-public class One {
+public class FixSizedThreadpool {
 
       static void main(String[] args) {
 

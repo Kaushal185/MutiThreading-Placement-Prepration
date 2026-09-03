@@ -19,7 +19,7 @@ public class ExecutorFramework {
     public static void main(String[] args) {
         long startTime =System.currentTimeMillis();
         //Runnable runnable = () ->{};
-        ExecutorService executorService = Executors.newFixedThreadPool(3);
+        ExecutorService executorService = Executors.newFixedThreadPool(10);
         for (int i = 1; i < 10; i++) {
             int finalI = i;
             executorService.submit(

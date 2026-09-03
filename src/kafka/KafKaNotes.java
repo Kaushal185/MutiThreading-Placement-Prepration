@@ -32,4 +32,5 @@ Partition is where the actual message is located.
  */
 public class KafKaNotes {
 
+
 }

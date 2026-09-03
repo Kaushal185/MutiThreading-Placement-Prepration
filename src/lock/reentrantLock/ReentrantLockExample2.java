@@ -1,8 +1,9 @@
-package lock;
+package lock.reentrantLock;
 
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 /*
+ReentrantLock : Same thread can aquire lock multiple times.
 Code between lock() and unlock() method is called critical section and which always written in
 try block.
 So unlock method will be called in finally block.

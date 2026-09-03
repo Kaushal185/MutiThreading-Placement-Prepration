@@ -1,7 +1,7 @@
-package org.nailyourinterview.lld.rate_limiter.limiter;
+package SystemDesign.lldPractice.rate_limiter.limiter;
 
-import org.nailyourinterview.lld.rate_limiter.model.RateLimitConfig;
-import org.nailyourinterview.lld.rate_limiter.enums.RateLimitType;
+import SystemDesign.lldPractice.rate_limiter.model.RateLimitConfig;
+import SystemDesign.lldPractice.rate_limiter.enums.RateLimitType;
 
 import java.util.HashMap;
 import java.util.Map;

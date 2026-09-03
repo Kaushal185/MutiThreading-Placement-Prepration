@@ -1,4 +1,5 @@
 package Oops.exception;
 
-public class PaymentService {
+public interface PaymentService {
+    boolean pay(int amount) throws InvalidPaymentsException;
 }

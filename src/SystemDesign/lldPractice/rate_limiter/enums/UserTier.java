@@ -1,4 +1,4 @@
-package org.nailyourinterview.lld.rate_limiter.enums;
+package SystemDesign.lldPractice.rate_limiter.enums;
 
 public enum UserTier {
     FREE,

@@ -1,8 +1,7 @@
-package org.nailyourinterview.lld.rate_limiter;
+package SystemDesign.lldPractice.rate_limiter;
 
-import org.nailyourinterview.lld.rate_limiter.enums.UserTier;
-import org.nailyourinterview.lld.rate_limiter.model.User;
-import org.nailyourinterview.lld.rate_limiter.service.RateLimiterService;
+import SystemDesign.lldPractice.rate_limiter.enums.UserTier;
+
 
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.CyclicBarrier;
